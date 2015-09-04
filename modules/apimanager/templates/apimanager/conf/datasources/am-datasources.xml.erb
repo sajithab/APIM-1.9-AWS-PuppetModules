@@ -1,0 +1,72 @@
+<datasources-configuration xmlns:svns="http://org.wso2.securevault/configuration">
+    <providers>
+        <provider>org.wso2.carbon.ndatasource.rdbms.RDBMSDataSourceReader</provider>
+    </providers>
+    <datasources>
+        <datasource>
+            <name>WSO2_AM_CONFIG_DB</name>
+            <description>The datasource used for appfactory config registry</description>
+            <jndiConfig>
+                <name>jdbc/<%= @configdb_database %></name>
+            </jndiConfig>
+            <definition type="RDBMS">
+                <configuration>
+                    <url>jdbc:mysql://<%= @mysql_server %>:<%= @mysql_port %>/<%= @configdb_database %>?autoReconnect=true&amp;relaxAutoCommit=true</url>
+                    <username><%= @configdb_user %></username>
+                    <password><%= @configdb_password %></password>
+                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <maxActive><%= @max_active %></maxActive>
+                    <maxWait><%= @max_wait %></maxWait>
+                    <minIdle>5</minIdle>
+                    <removeAbandoned>true</removeAbandoned>
+                    <logAbandoned>true</logAbandoned>
+                    <removeAbandonedTimeout>180</removeAbandonedTimeout>
+                </configuration>
+            </definition>
+        </datasource>
+        <datasource>
+            <name>WSO2AM_DB</name>
+            <description>The datasource used for API Manager database</description>
+            <jndiConfig>
+                <name>jdbc/WSO2AM_DB</name>
+            </jndiConfig>
+            <definition type="RDBMS">
+                <configuration>
+                    <url>jdbc:mysql://<%= @mysql_server %>:<%= @mysql_port %>/<%= @apimgt_database %>?autoReconnect=true&amp;relaxAutoCommit=true</url>
+                    <username><%= @apimgt_user %></username>
+                    <password><%= @apimgt_password %></password>
+                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <maxActive><%= @max_active %></maxActive>
+                    <maxWait><%= @max_wait %></maxWait>
+                    <testOnBorrow>true</testOnBorrow>
+                    <validationQuery>SELECT 1</validationQuery>
+                    <validationInterval>30000</validationInterval>
+		    <defaultAutoCommit>false</defaultAutoCommit>
+                </configuration>
+            </definition>
+        </datasource>
+<!--
+        <datasource>
+          <name>WSO2AM_STATS_DB</name>
+          <description>The datasource used to store stats of API Manager</description>
+          <jndiConfig>
+            <name>jdbc/WSO2AM_STATS_DB</name>
+          </jndiConfig>
+          <definition type="RDBMS">
+            <configuration>
+              <url>jdbc:mysql:/<%= @mysql_server %>:<%= @mysql_port %>/<%= @bam_apim_stat_database %>?autoReconnect=true&amp;relaxAutoCommit=true</url>
+              <username><%= @bam_apim_stat_user %></username>
+              <password><%= @bam_apim_stat_password %></password>
+              <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+              <maxActive><%= @max_active %></maxActive>
+              <maxWait><%= @max_wait %></maxWait>
+              <testOnBorrow>true</testOnBorrow>
+              <validationQuery>SELECT 1</validationQuery>
+              <validationInterval>30000</validationInterval>
+            </configuration>
+          </definition>
+        </datasource>
+-->
+      </datasources>
+</datasources-configuration>
+

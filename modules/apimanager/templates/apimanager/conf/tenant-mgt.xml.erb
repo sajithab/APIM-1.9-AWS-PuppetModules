@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<TenantManagers>
+        <TenantManager class="<%= tenant_manager_class %>">
+                <Property name="MultiTenantRealmConfigBuilder">org.wso2.ot.tenant.ldap.realm.config.builder.OTLDAPRealmConfigBuilder</Property>
+                <Property name="RootPartition"><%= app_base %></Property>
+                <Property name="OrganizationalObjectClass">organizationalUnit</Property>
+                <Property name="OrganizationalAttribute">ou</Property>
+                <Property name="OrganizationalSubContextObjectClass">organizationalUnit</Property>
+                <Property name="OrganizationalSubContextAttribute">ou</Property>
+        </TenantManager>
+</TenantManagers>
+
